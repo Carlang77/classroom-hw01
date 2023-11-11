@@ -2,12 +2,15 @@ package ee.mainor.game.web;
 
 
 
+import ee.mainor.game.dto.GameDto;
 import ee.mainor.game.model.Game;
 import ee.mainor.game.service.GameService;
 import ee.mainor.game.dto.Response;
 import ee.mainor.game.dto.CreateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("game")
@@ -27,7 +30,7 @@ public class GameControl {
     }
 
     @GetMapping
-    public Iterable<Game> getAll(){
+    public List<GameDto> getAll(){
         return GameService.getAll();
     }
 

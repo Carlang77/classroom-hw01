@@ -10,11 +10,9 @@ import org.springframework.data.relational.core.mapping.Table;
 
 public class Game {
 
-    @Id
+
     private Long id;
-
     private Long correctAnswer;
-
     private String name;
 
 

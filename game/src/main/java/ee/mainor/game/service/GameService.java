@@ -2,6 +2,7 @@ package ee.mainor.game.service;
 
 
 import ee.mainor.game.dto.CreateRequest;
+import ee.mainor.game.dto.GameDto;
 import ee.mainor.game.dto.Response;
 
 import ee.mainor.game.model.Game;
@@ -9,6 +10,8 @@ import ee.mainor.game.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,9 +46,17 @@ public class GameService {
         return gameResponse;
     }
 
-    public Iterable<Game> getAll(){
+    public List<GameDto> getAll(){
 
-        return GameRepository.findAll();
+//        return GameRepository.findAll()
+//                .stream()
+//                .map(game -> new GameDto().setId(game.getId())
+//                        .setName(game.getName())).toList();
+
+        return List.of(new GameDto());
+
+
+
     }
 
 }
