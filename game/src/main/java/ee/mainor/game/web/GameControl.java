@@ -1,14 +1,10 @@
 package ee.mainor.game.web;
 
-
-
-import ee.mainor.game.dto.GameDto;
-import ee.mainor.game.model.Game;
-import ee.mainor.game.service.GameService;
-import ee.mainor.game.dto.Response;
 import ee.mainor.game.dto.CreateRequest;
+import ee.mainor.game.dto.GameDto;
+import ee.mainor.game.dto.Response;
+import ee.mainor.game.service.GameService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,25 +14,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GameControl {
 
-    private final GameService GameService;
+    private final GameService gameService;
 
     @PostMapping
-    public Integer createGame(@RequestBody CreateRequest gameCreateRequest) {
-        return GameService.createGame(gameCreateRequest);
+    public GameDto createGame(@RequestBody CreateRequest gameCreateRequest) {
+        return gameService.createGame(gameCreateRequest);
     }
 
     @GetMapping("{gameId}/guess/{number}")
-    public Response guess(@PathVariable Integer gameId, @PathVariable Integer number) {
-        return GameService.guessNumber(gameId, number);
+    public Response guess(@PathVariable Long gameId, @PathVariable Integer number) {
+        return gameService.guessNumber(gameId, number);
     }
 
     @GetMapping
-    public List<GameDto> getAll(){
-        return GameService.getAll();
+    public List<GameDto> getAll() {
+        return gameService.getAll();
     }
-
-
-
-
-
 }
